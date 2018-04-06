@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 source $(dirname $0)/utils.sh
 
 install_python() {
@@ -8,7 +10,7 @@ install_python() {
 
   local tmp_dir="$(mktemp -d -t asdf-python.XXX)"
 
-  ensure_python_build_installed
+  install_or_update_python_build
 
   ASDF_CONCURRENCY="${ASDF_CONCURRENCY:-1}"
   echo "python-build $version $install_path"
